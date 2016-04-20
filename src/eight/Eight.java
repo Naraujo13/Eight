@@ -76,7 +76,7 @@ public class Eight {
         
         Eight game = new Eight ();
         game.intitialize();
-   /*
+   /* //Teste pré-definido
     game.matriz[0][0] = 8;
     game.matriz[0][1] = 7;
     game.matriz[0][2] = 6;
