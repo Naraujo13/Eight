@@ -15,11 +15,11 @@ import java.util.Random;
  *
  * @author nicol
  */
-public class Eight {
+public class Tabuleiro {
 
      int matriz[][];
      
-    public Eight (){
+    public Tabuleiro (){
         matriz = new int [3][3];
     }
     
@@ -68,13 +68,24 @@ public class Eight {
         System.out.println(swap);
          return swap%2 == 0;
     }
+    
+    public void profundidade(Node raiz){
+        
+    }
+    
+    public void chooseSon(Node n){
+
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Eight game = new Eight ();
+        Tabuleiro game = new Tabuleiro ();
         game.intitialize();
    /* //Teste pré-definido
     game.matriz[0][0] = 8;
