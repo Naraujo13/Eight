@@ -78,10 +78,10 @@ public class Tabuleiro {
     /**
      * Função que realiza busca em profundidade
      */
-    public void profundidade(){
+    public boolean profundidade(){
         int maxDepht = 10;
         int currentDepht = 0;
-        int flag;
+        int flag, right, left, up, down;
         int meta[][] = {{1,2,3},{4,5,6},{7,8,0}};
         Node currentNode = raiz;      
         Node testNode;
@@ -90,21 +90,31 @@ public class Tabuleiro {
            if (currentDepht < maxDepht){
                 //escolhe nodo para abrir (esq,baixo,cima,direita)
                 testNode = null;
+                right = 0;
+                left = 0;
+                up = 0;
+                down = 0;
                 flag=0;
                 while (testNode == null && flag == 0){
-                    if (currentNode.Left == null){
+                    if (currentNode.Left == null && left == 0){
                        testNode = currentNode.moveLeft();
+                       left++;
                     }
-                    else if(currentNode.Down == null){
+                    else if(currentNode.Down == null && down == 0){
                         testNode = currentNode.moveDown();
+                        down++;
                     }
-                    else if (currentNode.Up == null){
+                    else if (currentNode.Up == null && up == 0){
                         testNode = currentNode.moveUp();
+                        up++;
                     }
-                    else if (currentNode.Right == null){
+                    else if (currentNode.Right == null && right == 0){
                         testNode = currentNode.moveRight();
+                        right ++;
                     }
                     else{   //todos os nodos já foram abertos, então volta para o pai
+                        if (currentNode == raiz)
+                            return false;
                         testNode = currentNode.Father;
                         flag++;
                    }
@@ -125,7 +135,7 @@ public class Tabuleiro {
            //Testa se está no estado final desejado, caso esteja, chama função que salva caminho correto e retorna
            if (Arrays.deepEquals(currentNode.estado, meta)){
                savePath(currentNode);
-               return;
+               return true;
            }
         }              
     }
