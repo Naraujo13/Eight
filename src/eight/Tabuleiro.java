@@ -18,12 +18,15 @@ import java.util.Random;
 public class Tabuleiro {
 
      int matriz[][];
+     Node raiz;
      
     public Tabuleiro (){
-        matriz = new int [3][3];
+        int matriz[][] = new int [3][3];
+        initialize();
+        raiz = new Node(matriz, null);     
     }
     
-    public void intitialize(){
+    public void initialize(){
         //Cira ArrayList com números e os aleatoriza
         List <Integer> numbers = new ArrayList<>();
         for(int i = 0; i < 9 ; i++){
@@ -70,11 +73,38 @@ public class Tabuleiro {
     }
     
     public void profundidade(Node raiz){
-        
-    }
-    
-    public void chooseSon(Node n){
+        int maxDepht = 10;
+        int currentDepht = 0;
+        Node currentNode = raiz;      
+        Node testNode;
 
+        while (currentDepht <= maxDepht){
+            testNode = null;
+
+            //escolhe esquerda
+            while (testNode == null){
+                if (currentNode.Left == null){
+                   testNode = currentNode.moveLeft();
+                }
+                else if(currentNode.Down == null){
+                    testNode = currentNode.moveDown();
+                }
+                else if (currentNode.Up == null){
+                    testNode = currentNode.moveUp();
+                }
+                else if (currentNode.Right == null){
+                    testNode = currentNode.moveRight();
+                }
+                else{
+                    return;
+               }
+           }
+           currentNode = testNode;
+           
+        }
+        
+        
+        
     }
     
     
@@ -86,7 +116,7 @@ public class Tabuleiro {
         // TODO code application logic here
         
         Tabuleiro game = new Tabuleiro ();
-        game.intitialize();
+        game.initialize();
    /* //Teste pré-definido
     game.matriz[0][0] = 8;
     game.matriz[0][1] = 7;
