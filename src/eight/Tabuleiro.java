@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package eight;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 
 
@@ -18,13 +20,13 @@ import java.util.Random;
  */
 public class Tabuleiro {
 
-     int matriz[][];
+     int matriz[][] = {{2,4,3},{1,0,6},{7,5,8}};    ////Caso de teste (solução longa, requer 22 movimentos) = {{2,4,3},{1,0,6},{7,5,8}}
      Node raiz;
      
     public Tabuleiro (){
-        matriz = new int [3][3];
+     //   matriz = new int [3][3];
         do {
-           initialize();
+          // initialize();
         } while(!(isPossible(matriz)));
         raiz = new Node(matriz, null);     
     }
@@ -84,7 +86,7 @@ public class Tabuleiro {
         int maxDepht = 25;
         int currentDepht = 0;
         int flag, right, left, up, down;
-        int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
+        int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};       
         Node currentNode = raiz;      
         Node testNode;
 
@@ -160,15 +162,57 @@ public class Tabuleiro {
      */
     public boolean amplitude(){
         ArrayList <int[][]> estadosVisitados = new ArrayList<>();
-        int maxDepht = 15;
-        int currentDepht = 0;
-        int flag, right, left, up, down;
+      //  int maxDepht = 15;
+      //  int currentDepht = 0;
+       // int flag, right, left, up, down;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
-        Node currentNode = raiz;      
+        Node currentNode;      
         Node testNode;
-
-        estadosVisitados.add(raiz.estado);
         
+        
+        Queue<Node> fila = new ArrayDeque<>();
+        
+        
+        if (!fila.add(raiz))
+            return false;
+        
+        while (!fila.isEmpty()){
+            
+            currentNode = (Node) fila.peek();
+            if (Arrays.deepEquals(currentNode.estado, meta)){
+                savePath(currentNode);
+                return true;
+            }
+            
+            estadosVisitados.add(currentNode.estado);
+            
+            //Adiciona esquerdo
+            testNode = currentNode.moveLeft(estadosVisitados);
+            if (testNode != null)
+                fila.add(testNode);
+            
+            //Adiciona direito
+
+            testNode = currentNode.moveRight(estadosVisitados);
+            if (testNode != null)
+                fila.add(testNode);
+            
+            //Adiciona cima
+            testNode = currentNode.moveUp(estadosVisitados);
+            if (testNode != null)
+                fila.add(testNode);
+            
+            //Adiciona baixo
+            testNode = currentNode.moveDown(estadosVisitados);
+            if (testNode != null)
+                fila.add(testNode);
+            
+            //Remove nodo já analisado
+            fila.remove();
+        }
+        return false;
+        
+        /*
         while (true){        
             if (currentDepht < maxDepht){
                 //escolhe nodo para abrir (esq,baixo,cima,direita)
@@ -247,7 +291,8 @@ public class Tabuleiro {
                     
                 }    
             }
-        }              
+        }  
+        */
     }
     
     /**
