@@ -60,8 +60,10 @@ public class Node {
         proxEstado[iVazio-1][jVazio] = 0; 
         
         //Evita ciclo
-        if (Arrays.deepEquals(this.Father.estado, proxEstado))
-            return null;
+        if(this.Father != null) {
+            if (Arrays.deepEquals(this.Father.estado, proxEstado))
+                return null;
+        }
         
         newNode = new Node(proxEstado, this);
         Up = newNode;
@@ -87,9 +89,11 @@ public class Node {
         proxEstado[iVazio][jVazio] = estado[iVazio+1][jVazio];
         proxEstado[iVazio+1][jVazio] = 0; 
         
-        //Evita ciclo
-        if (Arrays.deepEquals(this.Father.estado, proxEstado))
-            return null;
+         //Evita ciclo
+        if(this.Father != null) {
+            if (Arrays.deepEquals(this.Father.estado, proxEstado))
+                return null;
+        }
         
         newNode = new Node(proxEstado, this);
         Down = newNode;
@@ -118,7 +122,7 @@ public class Node {
         //Evita ciclo
         if(this.Father != null) {
             if (Arrays.deepEquals(this.Father.estado, proxEstado))
-            return null;
+                return null;
         }
         
         
@@ -146,9 +150,11 @@ public class Node {
         proxEstado[iVazio][jVazio] = estado[iVazio][jVazio+1];
         proxEstado[iVazio][jVazio+1] = 0; 
         
-        //Evita ciclo
-        if (Arrays.deepEquals(this.Father.estado, proxEstado))
-            return null;
+         //Evita ciclo
+        if(this.Father != null) {
+            if (Arrays.deepEquals(this.Father.estado, proxEstado))
+                return null;
+        }
         
         newNode = new Node(proxEstado, this);
         Right = newNode;
