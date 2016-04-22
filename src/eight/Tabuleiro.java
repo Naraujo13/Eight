@@ -5,6 +5,7 @@
  */
 package Eight;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -72,41 +73,83 @@ public class Tabuleiro {
          return swap%2 == 0;
     }
     
+    /**
+     * Função que realiza busca em profundidade
+     * @param raiz - referencia para a raiz
+     */
     public void profundidade(Node raiz){
         int maxDepht = 10;
         int currentDepht = 0;
+        int flag;
+        int meta[][] = {{1,2,3},{4,5,6},{7,8,0}};
         Node currentNode = raiz;      
         Node testNode;
 
-        while (currentDepht <= maxDepht){
-            testNode = null;
-
-            //escolhe esquerda
-            while (testNode == null){
-                if (currentNode.Left == null){
-                   testNode = currentNode.moveLeft();
-                }
-                else if(currentNode.Down == null){
-                    testNode = currentNode.moveDown();
-                }
-                else if (currentNode.Up == null){
-                    testNode = currentNode.moveUp();
-                }
-                else if (currentNode.Right == null){
-                    testNode = currentNode.moveRight();
+        while (true){        
+           if (currentDepht < maxDepht){
+                //escolhe nodo para abrir (esq,baixo,cima,direita)
+                testNode = null;
+                flag=0;
+                while (testNode == null && flag == 0){
+                    if (currentNode.Left == null){
+                       testNode = currentNode.moveLeft();
+                    }
+                    else if(currentNode.Down == null){
+                        testNode = currentNode.moveDown();
+                    }
+                    else if (currentNode.Up == null){
+                        testNode = currentNode.moveUp();
+                    }
+                    else if (currentNode.Right == null){
+                        testNode = currentNode.moveRight();
+                    }
+                    else{   //todos os nodos já foram abertos, então volta para o pai
+                        testNode = currentNode.Father;
+                        flag++;
+                   }
+               }
+                if (flag == 0){
+                    currentNode = testNode;
+                    currentDepht++;
                 }
                 else{
-                    return;
-               }
+                    currentDepht--;
+                }
+            }
+           else{    //já está no limite máximo, volta ao pai
+               currentNode = currentNode.Father;
+               currentDepht--;
            }
-           currentNode = testNode;
-           
-        }
-        
-        
-        
+          
+           //Testa se está no estado final desejado, caso esteja, chama função que salva caminho correto e retorna
+           if (Arrays.deepEquals(currentNode.estado, meta)){
+               savePath(currentNode);
+               return;
+           }
+        }              
     }
     
+    /**
+     * Função que remove referencias que não são do caminho correto, deixando apenas ele.
+     * @param nodoFinal 
+     */
+    void savePath(Node nodoFinal){
+        Node anterior, atual;
+        atual = nodoFinal;
+        //Remove todas as referencias pros outros nodos, mantendo apenas o caminho correto
+        while(atual != raiz){
+            anterior = atual;
+            atual = atual.Father;
+            if(atual.Right != null && atual.Right != anterior){
+                atual.Right = null;
+            if(atual.Left != null && atual.Left != anterior){
+                atual.Left = null;
+            if(atual.Up != null && atual.Up != anterior){
+              atual.Up = null;
+            if(atual.Down != null && atual.Down != anterior){
+                atual.Down = null;
+        }       
+    }
     
     
     /**
