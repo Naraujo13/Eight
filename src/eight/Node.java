@@ -72,7 +72,10 @@ public class Node {
         */
         if (estadosVisitados.contains(proxEstado))
             return null;   
-        
+        if(this.Father != null) {
+            if (Arrays.deepEquals(this.Father.estado, proxEstado))
+                return null;
+        }
         newNode = new Node(proxEstado, this);
         Up = newNode;
         return newNode;
