@@ -482,51 +482,60 @@ public class interfac extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+        
+        
         if(tabuleiro.raiz.Up  != null) {
-            jTextField10.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][0]));
-            jTextField2.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][1]));
-            jTextField3.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][2]));
-            jTextField4.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][0]));
-            jTextField5.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][1]));
-            jTextField6.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][2]));
-            jTextField7.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][0]));
-            jTextField8.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][1]));
-            jTextField9.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][2]));
+            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            if(tabuleiro.raiz.Up.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][0])); else jTextField10.setText("");
+            if(tabuleiro.raiz.Up.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][1])); else jTextField2.setText("");
+            if(tabuleiro.raiz.Up.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][2])); else jTextField3.setText("");
+            if(tabuleiro.raiz.Up.estado[1][0] != 0) jTextField4.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][0])); else jTextField4.setText("");
+            if(tabuleiro.raiz.Up.estado[1][1] != 0) jTextField5.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][1])); else jTextField5.setText("");
+            if(tabuleiro.raiz.Up.estado[1][2] != 0) jTextField6.setText(Integer.toString(tabuleiro.raiz.Up.estado[1][2])); else jTextField6.setText("");
+            if(tabuleiro.raiz.Up.estado[2][0] != 0) jTextField7.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][0])); else jTextField7.setText("");
+            if(tabuleiro.raiz.Up.estado[2][1] != 0) jTextField8.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][1])); else jTextField8.setText("");
+            if(tabuleiro.raiz.Up.estado[2][2] != 0) jTextField9.setText(Integer.toString(tabuleiro.raiz.Up.estado[2][2])); else jTextField9.setText("");
+            tabuleiro.raiz = tabuleiro.raiz.Up;
         }
         else if(tabuleiro.raiz.Down  != null) {
-            jTextField10.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][0]));
-            jTextField2.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][1]));
-            jTextField3.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][2]));
-            jTextField4.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][0]));
-            jTextField5.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][1]));
-            jTextField6.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][2]));
-            jTextField7.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][0]));
-            jTextField8.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][1]));
-            jTextField9.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][2]));
+            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            if(tabuleiro.raiz.Down.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][0])); else jTextField10.setText("");
+            if(tabuleiro.raiz.Down.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][1])); else jTextField2.setText("");
+            if(tabuleiro.raiz.Down.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][2])); else jTextField3.setText("");
+            if(tabuleiro.raiz.Down.estado[1][0] != 0) jTextField4.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][0])); else jTextField4.setText("");
+            if(tabuleiro.raiz.Down.estado[1][1] != 0) jTextField5.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][1])); else jTextField5.setText("");
+            if(tabuleiro.raiz.Down.estado[1][2] != 0) jTextField6.setText(Integer.toString(tabuleiro.raiz.Down.estado[1][2])); else jTextField6.setText("");
+            if(tabuleiro.raiz.Down.estado[2][0] != 0) jTextField7.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][0])); else jTextField7.setText("");
+            if(tabuleiro.raiz.Down.estado[2][1] != 0) jTextField8.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][1])); else jTextField8.setText("");
+            if(tabuleiro.raiz.Down.estado[2][2] != 0) jTextField9.setText(Integer.toString(tabuleiro.raiz.Down.estado[2][2])); else jTextField9.setText("");
+            tabuleiro.raiz = tabuleiro.raiz.Down;
         }
         
         else if(tabuleiro.raiz.Left  != null) {
-            jTextField10.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][0]));
-            jTextField2.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][1]));
-            jTextField3.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][2]));
-            jTextField4.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][0]));
-            jTextField5.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][1]));
-            jTextField6.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][2]));
-            jTextField7.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][0]));
-            jTextField8.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][1]));
-            jTextField9.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][2]));
+            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            if(tabuleiro.raiz.Left.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][0])); else jTextField10.setText("");
+            if(tabuleiro.raiz.Left.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][1])); else jTextField2.setText("");
+            if(tabuleiro.raiz.Left.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][2])); else jTextField3.setText("");
+            if(tabuleiro.raiz.Left.estado[1][0] != 0) jTextField4.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][0])); else jTextField4.setText("");
+            if(tabuleiro.raiz.Left.estado[1][1] != 0) jTextField5.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][1])); else jTextField5.setText("");
+            if(tabuleiro.raiz.Left.estado[1][2] != 0) jTextField6.setText(Integer.toString(tabuleiro.raiz.Left.estado[1][2])); else jTextField6.setText("");
+            if(tabuleiro.raiz.Left.estado[2][0] != 0) jTextField7.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][0])); else jTextField7.setText("");
+            if(tabuleiro.raiz.Left.estado[2][1] != 0) jTextField8.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][1])); else jTextField8.setText("");
+            if(tabuleiro.raiz.Left.estado[2][2] != 0) jTextField9.setText(Integer.toString(tabuleiro.raiz.Left.estado[2][2])); else jTextField9.setText("");
+            tabuleiro.raiz = tabuleiro.raiz.Left;
         }
         else if(tabuleiro.raiz.Right  != null) {
-            jTextField10.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][0]));
-            jTextField2.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][1]));
-            jTextField3.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][2]));
-            jTextField4.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][0]));
-            jTextField5.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][1]));
-            jTextField6.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][2]));
-            jTextField7.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][0]));
-            jTextField8.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][1]));
-            jTextField9.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][2]));
+            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            if(tabuleiro.raiz.Right.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][0])); else jTextField10.setText("");
+            if(tabuleiro.raiz.Right.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][1])); else jTextField2.setText("");
+            if(tabuleiro.raiz.Right.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][2])); else jTextField3.setText("");
+            if(tabuleiro.raiz.Right.estado[1][0] != 0) jTextField4.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][0])); else jTextField4.setText("");
+            if(tabuleiro.raiz.Right.estado[1][1] != 0) jTextField5.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][1])); else jTextField5.setText("");
+            if(tabuleiro.raiz.Right.estado[1][2] != 0) jTextField6.setText(Integer.toString(tabuleiro.raiz.Right.estado[1][2])); else jTextField6.setText("");
+            if(tabuleiro.raiz.Right.estado[2][0] != 0) jTextField7.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][0])); else jTextField7.setText("");
+            if(tabuleiro.raiz.Right.estado[2][1] != 0) jTextField8.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][1])); else jTextField8.setText("");
+            if(tabuleiro.raiz.Right.estado[2][2] != 0) jTextField9.setText(Integer.toString(tabuleiro.raiz.Right.estado[2][2])); else jTextField9.setText("");
+            tabuleiro.raiz = tabuleiro.raiz.Right;
         }
         
         else {
