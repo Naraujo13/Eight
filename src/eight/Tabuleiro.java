@@ -155,6 +155,102 @@ public class Tabuleiro {
     }
     
     /**
+     * Função que realiza busca em amplitude
+     * @return returna true se encontrou solução e falso caso não encontre
+     */
+    public boolean amplitude(){
+        ArrayList <int[][]> estadosVisitados = new ArrayList<>();
+        int maxDepht = 15;
+        int currentDepht = 0;
+        int flag, right, left, up, down;
+        int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
+        Node currentNode = raiz;      
+        Node testNode;
+
+        estadosVisitados.add(raiz.estado);
+        
+        while (true){        
+            if (currentDepht < maxDepht){
+                //escolhe nodo para abrir (esq,baixo,cima,direita)
+                testNode = null;
+                right = 0;
+                left = 0;
+                up = 0;
+                down = 0;
+                flag=0;
+                //Abre todos os nodos possiveis e verifica se encontrou o estado meta
+                testNode = currentNode.moveLeft(estadosVisitados);
+                if (testNode != null){
+                    //Deu para abrir
+                    left = 1;
+                    if (Arrays.deepEquals(testNode.estado,meta)){
+                        savePath(testNode);
+                        return true;
+                    }
+                }
+                testNode = currentNode.moveDown(estadosVisitados);
+                if (testNode != null){
+                    //Deu para abrir
+                    down = 1;
+                    if (Arrays.deepEquals(testNode.estado,meta)){
+                        savePath(testNode);
+                        return true;
+                    }
+                }
+                testNode = currentNode.moveUp(estadosVisitados);
+                if (testNode != null){
+                    //Deu para abrir
+                    up = 1;
+                    if (Arrays.deepEquals(testNode.estado,meta)){
+                        savePath(testNode);
+                        return true;
+                    }
+                }
+                testNode = currentNode.moveRight(estadosVisitados);
+                if (testNode != null){
+                    //Deu para abrir
+                    right = 1;
+                    if (Arrays.deepEquals(testNode.estado,meta)){
+                        savePath(testNode);
+                        return true;
+                    }
+                }
+                
+                // Confere se não tem que abrir nodos que são irmaos (AMPLITUDE)
+                if (testNode.Father == null){
+                    //Esse nodo é a raiz
+                    if(left == 1){
+                        currentNode = currentNode.Left;
+                    }
+                    else if(down == 1){
+                        currentNode = currentNode.Down;
+                    }
+                    else if (up == 1){
+                        currentNode = currentNode.Up;
+                    }
+                    else if (right == 1){
+                        currentNode = currentNode.Right;
+                    }
+                    estadosVisitados.add(currentNode.estado);
+                    currentDepht++;
+                }
+                else if (right == 0 && left == 0 && up == 0 && down == 0){
+                    //Esse nodo não é a raiz, e todos os nodos em amplitude já foram abertos
+                    currentDepht++;
+                    //ESCREVER CODIGO AQUI
+                                                           
+                }
+                else{
+                    //Algum nodo ainda pode ser aberto
+                    currentDepht--;
+                    //ESCREVER CODIGO AQUI
+                    
+                }    
+            }
+        }              
+    }
+    
+    /**
      * Função que remove referencias que não são do caminho correto, deixando apenas ele.
      * @param nodoFinal 
      */
