@@ -81,7 +81,7 @@ public class Tabuleiro {
      */
     public boolean profundidade(){
         ArrayList <int[][]> estadosVisitados = new ArrayList<>();
-        int maxDepht = 10;
+        int maxDepht = 25;
         int currentDepht = 0;
         int flag, right, left, up, down;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
