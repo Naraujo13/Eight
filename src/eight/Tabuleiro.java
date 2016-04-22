@@ -82,7 +82,7 @@ public class Tabuleiro {
         int maxDepht = 10;
         int currentDepht = 0;
         int flag, right, left, up, down;
-        int meta[][] = {{1,2,3},{4,5,6},{7,8,0}};
+        int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
         Node currentNode = raiz;      
         Node testNode;
 
