@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Eight;
+package eight;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,8 +22,10 @@ public class Tabuleiro {
      Node raiz;
      
     public Tabuleiro (){
-        int matriz[][] = new int [3][3];
-        initialize();
+        matriz = new int [3][3];
+        do {
+           initialize();
+        } while(!(isPossible(matriz)));
         raiz = new Node(matriz, null);     
     }
     
@@ -75,9 +77,8 @@ public class Tabuleiro {
     
     /**
      * Função que realiza busca em profundidade
-     * @param raiz - referencia para a raiz
      */
-    public void profundidade(Node raiz){
+    public void profundidade(){
         int maxDepht = 10;
         int currentDepht = 0;
         int flag;
@@ -140,13 +141,13 @@ public class Tabuleiro {
         while(atual != raiz){
             anterior = atual;
             atual = atual.Father;
-            if(atual.Right != null && atual.Right != anterior){
+            if(atual.Right != null && atual.Right != anterior)
                 atual.Right = null;
-            if(atual.Left != null && atual.Left != anterior){
+            if(atual.Left != null && atual.Left != anterior)
                 atual.Left = null;
-            if(atual.Up != null && atual.Up != anterior){
+            if(atual.Up != null && atual.Up != anterior)
               atual.Up = null;
-            if(atual.Down != null && atual.Down != anterior){
+            if(atual.Down != null && atual.Down != anterior)
                 atual.Down = null;
         }       
     }
@@ -154,7 +155,7 @@ public class Tabuleiro {
     
     /**
      * @param args the command line arguments
-     */
+     *
     public static void main(String[] args) {
         // TODO code application logic here
         
@@ -170,13 +171,13 @@ public class Tabuleiro {
     game.matriz[2][0] =  0;
     game.matriz[2][1] =  3;
     game.matriz[2][2] =  5;
-    */
+    
     if (game.isPossible(game.matriz))
             System.out.println("Possível.");
         else
            System.out.println("Impossível."); 
         
       
-    }
+    } */
     
 }

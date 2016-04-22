@@ -1,10 +1,10 @@
+package eight;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eight;
-
 import java.util.Arrays;
 
 /**
@@ -116,8 +116,11 @@ public class Node {
         proxEstado[iVazio][jVazio-1] = 0; 
         
         //Evita ciclo
-        if (Arrays.deepEquals(this.Father.estado, proxEstado))
+        if(this.Father != null) {
+            if (Arrays.deepEquals(this.Father.estado, proxEstado))
             return null;
+        }
+        
         
         newNode = new Node(proxEstado, this);
         Left = newNode;
