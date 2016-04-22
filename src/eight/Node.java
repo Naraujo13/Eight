@@ -45,7 +45,7 @@ public class Node {
      * @return retorna referência para o nodo que representa o novo estado
      */
     public Node moveUp(){
-        int proxEstado[][];     //cria novo estado como clone do atual
+        int proxEstado[][] = new int[3][3];     //cria novo estado como clone do atual
         Node newNode;
         
         //Verifica se movimento é possível
@@ -53,8 +53,9 @@ public class Node {
             return null;
         
         //Cria novo estado como clone do antigo
-        proxEstado = estado.clone();
-        
+        for (int i=0; i<3; i++){
+            System.arraycopy(estado[i], 0, proxEstado[i], 0, 3);
+        }        
         //Faz movimento
         proxEstado[iVazio][jVazio] = estado[iVazio-1][jVazio];
         proxEstado[iVazio-1][jVazio] = 0; 
@@ -75,7 +76,7 @@ public class Node {
      * @return retorna referência para o nodo que representa o novo estado
      */
     public Node moveDown(){
-        int proxEstado[][];     //cria novo estado como clone do atual
+        int proxEstado[][] = new int[3][3];     //cria novo estado como clone do atual
         Node newNode;
         
         //Verifica se movimento é possível
@@ -83,7 +84,9 @@ public class Node {
             return null;
         
         //Cria novo estado como clone do antigo
-        proxEstado = estado.clone();
+        for (int i=0; i<3; i++){
+            System.arraycopy(estado[i], 0, proxEstado[i], 0, 3);
+        }  
         
         //Faz movimento
         proxEstado[iVazio][jVazio] = estado[iVazio+1][jVazio];
@@ -105,7 +108,7 @@ public class Node {
      * @return retorna referência para o nodo que representa o novo estado
      */
     public Node moveLeft(){
-        int proxEstado[][];     
+        int proxEstado[][] = new int[3][3];     
         Node newNode;
         
         //Verifica se movimento é possível
@@ -113,7 +116,10 @@ public class Node {
             return null;
         
         //Cria novo estado como clone do antigo
-        proxEstado = estado.clone();
+          for (int i=0; i<3; i++){
+            System.arraycopy(estado[i], 0, proxEstado[i], 0, 3);
+        }  
+        
         
         //Faz movimento
         proxEstado[iVazio][jVazio] = estado[iVazio][jVazio-1];
@@ -125,7 +131,6 @@ public class Node {
                 return null;
         }
         
-        
         newNode = new Node(proxEstado, this);
         Left = newNode;
         return newNode;
@@ -136,7 +141,7 @@ public class Node {
      * @return retorna referência para o nodo que representa o novo estado
      */
     public Node moveRight(){
-        int proxEstado[][];     
+        int proxEstado[][] = new int[3][3];     
         Node newNode;
         
         //Verifica se movimento é possível
@@ -144,7 +149,9 @@ public class Node {
             return null;
         
         //Cria novo estado como clone do antigo
-        proxEstado = estado.clone();
+        for (int i=0; i<3; i++){
+            System.arraycopy(estado[i], 0, proxEstado[i], 0, 3);
+        }  
         
         //Faz movimento
         proxEstado[iVazio][jVazio] = estado[iVazio][jVazio+1];
