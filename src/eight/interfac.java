@@ -501,7 +501,7 @@ public class interfac extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        if(!tabuleiro.profundidade()) {
+        if(!tabuleiro.amplitude()) {
             jLabel2.setText("A busca em amplitude não encontrou solução com o limite estabelecido");
             jButton2.setEnabled(false);
             jButton3.setEnabled(false);// TODO add your handling code here:
