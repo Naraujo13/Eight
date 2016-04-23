@@ -26,10 +26,14 @@ public class Tabuleiro {
      
     public Tabuleiro (){
         matriz = new int [3][3];
+        setTabuleiro();    
+    }
+    
+    public void setTabuleiro(){
         do {
            initialize();
         } while(!(isPossible(matriz)));
-        raiz = new Node(matriz, null);     
+        raiz = new Node(matriz, null);    
     }
     
     public void initialize(){

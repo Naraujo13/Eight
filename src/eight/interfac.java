@@ -458,8 +458,9 @@ public class interfac extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
         
+        jTextField1.setText("0");//Toda vez que clicar em Iniciar, zera o numero de movimentos
+        tabuleiro.setTabuleiro(); //Inicia um novo jogo toda vez que clicar em iniciar
         if(tabuleiro.matriz[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.matriz[0][0])); else jTextField10.setText("");
         if(tabuleiro.matriz[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.matriz[0][1])); else jTextField2.setText("");
         if(tabuleiro.matriz[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.matriz[0][2])); else jTextField3.setText("");
