@@ -17,6 +17,7 @@ public class Node {
     Node Up, Down, Left, Right, Father;     //Up, Down, Left, Right - Estados filhos para cada movimento (peça da esq, dir...); Father - Nodo que representa o pai (estado anterior)
     int estado[][];                         //Matriz que representa o estado atual
     int iVazio, jVazio;
+    int nivel;
     
     /**
      * Construtor da classe nodo
@@ -38,6 +39,17 @@ public class Node {
                }                 
            }
        }
+       if (Father != null){
+            nivel = 1;
+            Node aux;
+            aux = Father;
+            while (aux.Father != null){
+                nivel++;
+                aux = aux.Father;
+            }
+       }
+       else
+           nivel = 0;
     }
     
     
