@@ -85,7 +85,7 @@ public class Tabuleiro {
      */
     public boolean profundidade(){
         ArrayList <int[][]> estadosVisitados = new ArrayList<>();
-        int maxDepht = 20;
+        int maxDepht = 30;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};   
         Node currentNode;      
         Node testNode;
