@@ -55,10 +55,9 @@ public class Node {
     
      /**
      * Função que troca vazio com nodo acima
-     * @param estadosVisitados
      * @return retorna referência para o nodo que representa o novo estado
      */
-    public Node moveUp(ArrayList <int[][]> estadosVisitados){
+    public Node moveUp(){
         int proxEstado[][] = new int[3][3];     //cria novo estado como clone do atual
         Node newNode;
         
@@ -76,18 +75,12 @@ public class Node {
         
        
         //Evita ciclo
-        /*
+        
         if(this.Father != null) {
             if (Arrays.deepEquals(this.Father.estado, proxEstado))
                 return null;
         }
-        */
-        if (estadosVisitados.contains(proxEstado))
-            return null;   
-        if(this.Father != null) {
-            if (Arrays.deepEquals(this.Father.estado, proxEstado))
-                return null;
-        }
+        
         newNode = new Node(proxEstado, this);
         Up = newNode;
         return newNode;
@@ -97,7 +90,7 @@ public class Node {
      * Função que troca vazio com nodo abaixo
      * @return retorna referência para o nodo que representa o novo estado
      */
-    public Node moveDown(ArrayList <int[][]> estadosVisitados){
+    public Node moveDown(){
         int proxEstado[][] = new int[3][3];     //cria novo estado como clone do atual
         Node newNode;
         
@@ -114,9 +107,6 @@ public class Node {
         proxEstado[iVazio][jVazio] = estado[iVazio+1][jVazio];
         proxEstado[iVazio+1][jVazio] = 0; 
         
-        
-        if (estadosVisitados.contains(proxEstado))
-            return null; 
          //Evita ciclo
         if(this.Father != null) {
             if (Arrays.deepEquals(this.Father.estado, proxEstado))
@@ -132,7 +122,7 @@ public class Node {
      * Função que troca vazio com nodo a sua esquerda
      * @return retorna referência para o nodo que representa o novo estado
      */
-    public Node moveLeft(ArrayList <int[][]> estadosVisitados){
+    public Node moveLeft(){
         int proxEstado[][] = new int[3][3];     
         Node newNode;
         
@@ -150,8 +140,6 @@ public class Node {
         proxEstado[iVazio][jVazio] = estado[iVazio][jVazio-1];
         proxEstado[iVazio][jVazio-1] = 0; 
         
-        if (estadosVisitados.contains(proxEstado))
-            return null; 
         //Evita ciclo
         if(this.Father != null) {
             if (Arrays.deepEquals(this.Father.estado, proxEstado))
@@ -167,7 +155,7 @@ public class Node {
      * Função que troca vazio com nodo a sua direita
      * @return retorna referência para o nodo que representa o novo estado
      */
-    public Node moveRight(ArrayList <int[][]> estadosVisitados){
+    public Node moveRight(){
         int proxEstado[][] = new int[3][3];     
         Node newNode;
         
@@ -183,8 +171,6 @@ public class Node {
         proxEstado[iVazio][jVazio] = estado[iVazio][jVazio+1];
         proxEstado[iVazio][jVazio+1] = 0; 
         
-        if (estadosVisitados.contains(proxEstado))
-            return null; 
          //Evita ciclo
         if(this.Father != null) {
             if (Arrays.deepEquals(this.Father.estado, proxEstado))

@@ -7,12 +7,10 @@ package eight;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
-import java.util.Random;
 
 
 /**
@@ -88,7 +86,6 @@ public class Tabuleiro {
      * @return returna true se encontrou solução e falso caso não encontre
      */
     public boolean profundidade(){
-        ArrayList <int[][]> estadosVisitados = new ArrayList<>();
         int maxDepht = 30;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};   
         Node currentNode;      
@@ -97,7 +94,6 @@ public class Tabuleiro {
         Deque<Node> pilha = new ArrayDeque<>();
         
         pilha.push(raiz);
-        //estadosVisitados.add(raiz.estado);
         
         while (!pilha.isEmpty()){
             currentNode = (Node) pilha.pop();
@@ -107,22 +103,20 @@ public class Tabuleiro {
             }
             
             if( currentNode.nivel < maxDepht){              
-                if (!estadosVisitados.contains(currentNode.estado))
-                    estadosVisitados.add(currentNode.estado);
-    
-                testNode = currentNode.moveDown(estadosVisitados);
+                    
+                testNode = currentNode.moveDown();
                 if (testNode != null) { 
                     pilha.push(testNode);
                 }
-                testNode = currentNode.moveUp(estadosVisitados);
+                testNode = currentNode.moveUp();
                 if (testNode != null) { 
                     pilha.push(testNode);
                 }
-                testNode = currentNode.moveRight(estadosVisitados);
+                testNode = currentNode.moveRight();
                 if (testNode != null){  
                     pilha.push(testNode);
                 }
-                testNode = currentNode.moveLeft(estadosVisitados);
+                testNode = currentNode.moveLeft();
                 if (testNode != null){  
                     pilha.push(testNode);
                 }             
@@ -136,10 +130,6 @@ public class Tabuleiro {
      * @return returna true se encontrou solução e falso caso não encontre
      */
     public boolean amplitude(){
-        ArrayList <int[][]> estadosVisitados = new ArrayList<>();
-      //  int maxDepht = 15;
-      //  int currentDepht = 0;
-       // int flag, right, left, up, down;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
         Node currentNode;      
         Node testNode;
@@ -157,29 +147,26 @@ public class Tabuleiro {
             if (Arrays.deepEquals(currentNode.estado, meta)){
                 savePath(currentNode);
                 return true;
-            }           // if (!estadosVisitados.contains(currentNode.estado)) 
-
-           // if (!estadosVisitados.contains(currentNode.estado)) 
-                estadosVisitados.add(currentNode.estado);
+            }          
             
             //Adiciona esquerdo
-            testNode = currentNode.moveLeft(estadosVisitados);
+            testNode = currentNode.moveLeft();
             if (testNode != null)
                 fila.add(testNode);
             
             //Adiciona direito
 
-            testNode = currentNode.moveRight(estadosVisitados);
+            testNode = currentNode.moveRight();
             if (testNode != null)
                 fila.add(testNode);
             
             //Adiciona cima
-            testNode = currentNode.moveUp(estadosVisitados);
+            testNode = currentNode.moveUp();
             if (testNode != null)
                 fila.add(testNode);
             
             //Adiciona baixo
-            testNode = currentNode.moveDown(estadosVisitados);
+            testNode = currentNode.moveDown();
             if (testNode != null)
                 fila.add(testNode);
             
