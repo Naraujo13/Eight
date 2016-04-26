@@ -21,6 +21,7 @@ public class Tabuleiro {
 
      int matriz[][];    ////Caso de teste (solução longa, requer 22 movimentos, porém execução rápida) = {{2,4,3},{1,0,6},{7,5,8}}
      Node raiz;
+     int estadosAnalisados;
      
     public Tabuleiro (){
         matriz = new int [3][3];
@@ -86,10 +87,13 @@ public class Tabuleiro {
      * @return returna true se encontrou solução e falso caso não encontre
      */
     public boolean profundidade(){
+      
         int maxDepht = 30;
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};   
         Node currentNode;      
         Node testNode;
+        
+        estadosAnalisados = 0;
         
         Deque<Node> pilha = new ArrayDeque<>();
         
@@ -97,6 +101,7 @@ public class Tabuleiro {
         
         while (!pilha.isEmpty()){
             currentNode = (Node) pilha.pop();
+            estadosAnalisados++;
             if (Arrays.deepEquals(currentNode.estado, meta)){
                     savePath(currentNode);
                     return true;
@@ -130,13 +135,14 @@ public class Tabuleiro {
      * @return returna true se encontrou solução e falso caso não encontre
      */
     public boolean amplitude(){
+        
         int meta[][] = {{0,1,2},{3,4,5},{6,7,8}};
         Node currentNode;      
         Node testNode;
-        
-        
+       
         Queue<Node> fila = new ArrayDeque<>();
-        
+       
+        estadosAnalisados = 0;
         
         if (!fila.add(raiz))
             return false;
@@ -144,6 +150,7 @@ public class Tabuleiro {
         while (!fila.isEmpty()){
             
             currentNode = (Node) fila.peek();
+            estadosAnalisados++;
             if (Arrays.deepEquals(currentNode.estado, meta)){
                 savePath(currentNode);
                 return true;
