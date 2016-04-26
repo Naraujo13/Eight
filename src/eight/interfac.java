@@ -52,9 +52,11 @@ public class interfac extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jogo do 8");
@@ -339,17 +341,6 @@ public class interfac extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel1.setText("Movimentos Realizados:");
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("0");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setBackground(new java.awt.Color(255, 0, 51));
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -361,6 +352,15 @@ public class interfac extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel3.setText("Estados analisados:");
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel4.setText("0");
+
+        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel5.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -397,13 +397,17 @@ public class interfac extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(57, 57, 57))
+                .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel10, jPanel11, jPanel3, jPanel4, jPanel5, jPanel6, jPanel7, jPanel8, jPanel9});
@@ -441,7 +445,11 @@ public class interfac extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -459,7 +467,8 @@ public class interfac extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        jTextField1.setText("0");//Toda vez que clicar em Iniciar, zera o numero de movimentos
+        jLabel4.setText("0");
+        jLabel5.setText("0");//Toda vez que clicar em Iniciar, zera o numero de movimentos
         tabuleiro.setTabuleiro(); //Inicia um novo jogo toda vez que clicar em iniciar
         if(tabuleiro.matriz[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.matriz[0][0])); else jTextField10.setText("");
         if(tabuleiro.matriz[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.matriz[0][1])); else jTextField2.setText("");
@@ -497,6 +506,7 @@ public class interfac extends javax.swing.JFrame {
             jButton3.setEnabled(false);
             jButton4.setEnabled(true);
             jButton5.setEnabled(true);
+            jLabel4.setText(Integer.toString(tabuleiro.estadosAnalisados));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -513,19 +523,16 @@ public class interfac extends javax.swing.JFrame {
             jButton3.setEnabled(false);
             jButton4.setEnabled(true);
             jButton5.setEnabled(true);
+            jLabel4.setText(Integer.toString(tabuleiro.estadosAnalisados));
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
         
         if(tabuleiro.raiz.Up  != null) {
-            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            jLabel5.setText(Integer.toString(Integer.parseInt(jLabel5.getText())+1));
             if(tabuleiro.raiz.Up.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][0])); else jTextField10.setText("");
             if(tabuleiro.raiz.Up.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][1])); else jTextField2.setText("");
             if(tabuleiro.raiz.Up.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Up.estado[0][2])); else jTextField3.setText("");
@@ -538,7 +545,7 @@ public class interfac extends javax.swing.JFrame {
             tabuleiro.raiz = tabuleiro.raiz.Up;
         }
         else if(tabuleiro.raiz.Down  != null) {
-            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            jLabel5.setText(Integer.toString(Integer.parseInt(jLabel5.getText())+1));
             if(tabuleiro.raiz.Down.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][0])); else jTextField10.setText("");
             if(tabuleiro.raiz.Down.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][1])); else jTextField2.setText("");
             if(tabuleiro.raiz.Down.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Down.estado[0][2])); else jTextField3.setText("");
@@ -552,7 +559,7 @@ public class interfac extends javax.swing.JFrame {
         }
         
         else if(tabuleiro.raiz.Left  != null) {
-            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            jLabel5.setText(Integer.toString(Integer.parseInt(jLabel5.getText())+1));
             if(tabuleiro.raiz.Left.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][0])); else jTextField10.setText("");
             if(tabuleiro.raiz.Left.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][1])); else jTextField2.setText("");
             if(tabuleiro.raiz.Left.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Left.estado[0][2])); else jTextField3.setText("");
@@ -565,7 +572,7 @@ public class interfac extends javax.swing.JFrame {
             tabuleiro.raiz = tabuleiro.raiz.Left;
         }
         else if(tabuleiro.raiz.Right  != null) {
-            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())+1));
+            jLabel5.setText(Integer.toString(Integer.parseInt(jLabel5.getText())+1));
             if(tabuleiro.raiz.Right.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][0])); else jTextField10.setText("");
             if(tabuleiro.raiz.Right.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][1])); else jTextField2.setText("");
             if(tabuleiro.raiz.Right.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Right.estado[0][2])); else jTextField3.setText("");
@@ -589,7 +596,7 @@ public class interfac extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if(tabuleiro.raiz.Father != null) {
-            jTextField1.setText(Integer.toString(Integer.parseInt(jTextField1.getText())-1));
+            jLabel5.setText(Integer.toString(Integer.parseInt(jLabel5.getText())-1));
             if(tabuleiro.raiz.Father.estado[0][0] != 0) jTextField10.setText(Integer.toString(tabuleiro.raiz.Father.estado[0][0])); else jTextField10.setText("");
             if(tabuleiro.raiz.Father.estado[0][1] != 0) jTextField2.setText(Integer.toString(tabuleiro.raiz.Father.estado[0][1])); else jTextField2.setText("");
             if(tabuleiro.raiz.Father.estado[0][2] != 0) jTextField3.setText(Integer.toString(tabuleiro.raiz.Father.estado[0][2])); else jTextField3.setText("");
@@ -646,6 +653,9 @@ public class interfac extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
@@ -655,7 +665,6 @@ public class interfac extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
